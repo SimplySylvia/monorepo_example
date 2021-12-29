@@ -3,7 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const config = require("@monorepoexample/config");
+
 /* ==== Internal Modules ==== */
 const routes = require("./routes");
 
@@ -11,7 +11,8 @@ const routes = require("./routes");
 const app = express(); // create express app
 
 /* ====  Configuration  ==== */
-const PORT = config.PORT;
+//NOTE bring in config from packages
+const config = require("@monorepoexample/config");
 
 /* ====  Middleware  ==== */
 //Cors
@@ -48,11 +49,11 @@ and this middleware's job is to handover control to react
 */
 app.use((req, res, next) => {
   console.log(req.headers);
-  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 /* ====  Server Listener / Connection ==== */
-// start express server on port 5000
-app.listen(PORT, () => {
-  console.log("server started on port 5000");
+// start express server
+app.listen(config.PORT, () => {
+  console.log(`server started on port ${config.PORT}`);
 });
