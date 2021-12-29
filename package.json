@@ -1,0 +1,20 @@
+{
+  "name": "monorepoexample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/*"
+  ],
+  "scripts": {
+    "start-backend-dev": "yarn --cwd backend dev",
+    "start-frontend-dev": "yarn --cwd frontend start",
+    "dev": "concurrently --handle-input -n frontend,backend 'npm:start-frontend-dev' 'npm:start-backend-dev'"
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1"
+  }
+}
