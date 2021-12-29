@@ -10,9 +10,11 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "yarn --cwd backend start",
     "start-backend-dev": "yarn --cwd backend dev",
     "start-frontend-dev": "yarn --cwd frontend start",
-    "dev": "concurrently --handle-input -n frontend,backend 'npm:start-frontend-dev' 'npm:start-backend-dev'"
+    "dev": "concurrently --kill-others --handle-input -n frontend,backend 'npm:start-frontend-dev' 'npm:start-backend-dev'",
+    "deploy-prep": "yarn --cwd frontend build && mv ./frontend/build ./backend/build"
   },
   "devDependencies": {
     "concurrently": "^6.5.1"
