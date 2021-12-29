@@ -3,7 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-
+const config = require("@monorepoexample/config");
 /* ==== Internal Modules ==== */
 const routes = require("./routes");
 
@@ -11,7 +11,7 @@ const routes = require("./routes");
 const app = express(); // create express app
 
 /* ====  Configuration  ==== */
-const PORT = process.env.PORT || 5000;
+const PORT = config.PORT;
 
 /* ====  Middleware  ==== */
 //Cors
